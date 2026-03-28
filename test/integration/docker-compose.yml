@@ -1,0 +1,17 @@
+services:
+  sshd:
+    image: lscr.io/linuxserver/openssh-server:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - USER_NAME=agent
+      - USER_PASSWORD=password
+      - PASSWORD_ACCESS=true
+      - SUDO_ACCESS=false
+      - LOG_STDOUT=true
+    ports:
+      - "2222:2222"
+    volumes:
+      - ./fixtures/sshd-config:/config
+
